@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Index</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Books Inventory</h1>
+    <ul class="book-list">
+
+    <% book.forEach(ele => {%>
+    <li>
+      <div class="book-card">
+        <p><small>Title:</small> <%= ele.title %></p>
+        <p><small>Author:</small> <%= ele.author %></p>
+        <p><small>Description:</small> <%= ele.description %></p>
+        <p><small>Likes:</small> <%= ele.likes %></p>
+        <p><small>Created:</small> <%= ele.created.toLocaleDateString() %></p>
+        <p><small>Tags:</small> <%= ele.tags %></p>
+      </div>
+      <a href='/books/<%= ele.id %>/edit'>Edit</a>
+      <a href='/books/<%= ele.id %>/delete'>Delete</a>
+    </li>
+    <% }) %> 
+
+  </body>
+</html>
