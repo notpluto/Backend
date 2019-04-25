@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Details</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <a href="/">Back</a>
+    <div class=" wrapper">
+    <h1>Book Details Section</h1>
+    <ul class="book-list">
+
+    <% book.forEach(ele => {%>
+    <li>
+      <div class="book-card-detail">
+        <p><small>Title:</small> <%= ele.title %></p>
+        <p><small>Author:</small> <%= ele.author.name %></p>
+        <p><small>Description:</small> <%= ele.description %></p>
+        <p><small>Pages:</small> <%= ele.pages %></p>
+        <p><small>Created:</small> <%= ele.created.toLocaleDateString().split('/').reverse().join('-') %></p>
+        <p><small>Tags:</small> <%= ele.tags %></p>
+      </div>
+      <div class="modify-details">
+        <a href='/books/<%= ele.id %>/edit'>Edit</a>
+        <a href='/books/<%= ele.id %>/delete'>Delete</a>
+      </div>
+    </li>
+    <% }) %> 
+    </ul>
+  </div>
+  </body>
+</html>

@@ -7,14 +7,17 @@ var bookSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	likes:{
+	pages:{
 		type: Number,
 		default: 0,
 	},
-	author: {type:String},
+	author: {
+		type:mongoose.Schema.Types.ObjectId,
+		ref: 'Author'
+	},
 	created: Date,
 	tags: [String],
-})
+});
 
 var Book = mongoose.model('Book', bookSchema);
 

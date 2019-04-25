@@ -5,21 +5,24 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-  	<a href="/index">Back</a>
+  	<a href="/">Back</a>
+  	<a href="/">Main</a>
 		<div class="wrapper">
 	    <h1>Add new books</h1>
 	   </div>
 	    <form class="add-book" action= '/books' method='POST'>
 	    	<input type="text" name="title" placeholder="Book Title">
-	    	<input type="text" name="author" placeholder="Author">
+	    	<select name="author">
+	    		<% authors.forEach(author => { %>
+	    		<option value="<%=author._id%>"><%= author.name %></option>
+	    	<% }) %>
+	    	</select>
 	    	<textarea type="text" placeholder="Description" name="description"></textarea>
-	    	<input type="number" name="likes" placeholder="Likes">
+	    	<input type="number" name="pages" placeholder="Pages">
 	    	<input type="date" name="created" placeholder="created">
 	    	<input type="text" name="tags" placeholder="tags">
 	    	<div class="submit">
 	    		<input type="submit" value="Add Books">
-	    	<!-- <input type="text" name="edit">
-	    	<input type="text" name="delete"> -->
 				</div>
 	    </form>
 	  </div>

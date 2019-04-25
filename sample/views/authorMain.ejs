@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authors listed</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Listed Author's</h1>
+    <a href="/author/add">New Author</a>
+    <ul class="book-list">
+    <% author.forEach(ele => {%>
+    <li>
+      <a href='/author/<%= ele.id %>'>
+        <div class="author-card">
+          <p><small>Name:<br></small> <%= ele.name %></p>
+          <p><small>Age:<br></small> <%= ele.age %></p>
+        </div>
+      </a>
+      <div class="modify">
+        <!-- <a href='/author/<%= ele.id %>/edit'>Edit</a> -->
+        <a href='/author/<%= ele.id %>/delete'>Remove</a>
+      </div>
+    </li>
+    <% }) %> 
+  </body>
+</html>
