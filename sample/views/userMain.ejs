@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Users</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Member Users</h1>
+    <a href="/users/info">Back</a>
+    <!-- <a href="/users/login">Login</a> -->
+    <ul class="book-list">
+    <% user.forEach(ele => {%>
+    <li>
+      <div class="user-card"> 
+        <p><small>Name:<br></small> <%= ele.name %></p>
+        <p><small>Email:<br></small> <%= ele.email %></p> 
+        <div class="modify-icons">
+          <div><a href='/users/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+        </div>
+      </div>
+      </a>
+    </li>
+    <% }) %>
+  </body>
+</html>

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700|Source+Serif+Pro:400,700');
 
+/* Main Section */
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -27,6 +29,7 @@ h1{
 	padding: 10px;
 	color: #333;
 	border-radius: 10px;
+	/*margin-bottom: 10px;*/
 }
 .book-list li {
 	display: inline-block;
@@ -111,4 +114,24 @@ select {
 	padding: 10px;
 	color: #333;
 	border-radius: 10px;
+}
+div a {
+	text-decoration: none;
+	color: black;
+	margin: 0;
+}
+.modify-icons{
+	display: flex;
+	/*justify-content: space-between;*/
+}
+a i{
+	margin-right: 10px;
+}
+.user-card{
+	background: steelblue;
+	width: 280px;
+	padding: 10px;
+	color: #333;
+	border-radius: 10px;
+	margin-bottom: 10px;
 }

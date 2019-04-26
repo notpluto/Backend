@@ -3,6 +3,8 @@
   <head>
     <title>Authors listed</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
   </head>
   <body>
     <h1>Listed Author's</h1>
@@ -14,12 +16,15 @@
         <div class="author-card">
           <p><small>Name:<br></small> <%= ele.name %></p>
           <p><small>Age:<br></small> <%= ele.age %></p>
+          <div class="modify-icons">
+            <div><a href='/users/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+          </div>
         </div>
       </a>
-      <div class="modify">
-        <!-- <a href='/author/<%= ele.id %>/edit'>Edit</a> -->
+      <!-- <div class="modify">
+        <a href='/author/<%= ele.id %>/edit'>Edit</a>
         <a href='/author/<%= ele.id %>/delete'>Remove</a>
-      </div>
+      </div> -->
     </li>
     <% }) %> 
   </body>

@@ -5,15 +5,16 @@ var Author = require('../models/author')
 
 
 router.get('/', (req, res, next) => {
+	if(req.session && req.session.userId) {
 	Book.find({}).populate('author').exec((err, book) => {
 		if(err) return next(err);
 		res.render('bookMain', {book});
-	})
+	})	
+	}
+	else {
+		res.redirect('/users/login')
+	}
 })
-
-// router.get('/books', function(req, res, next) {
-//   res.render('addBook');
-// });
 
 router.get('/new', function(req, res, next) {
 	Author.find({}, 'name', (err, authors) => {

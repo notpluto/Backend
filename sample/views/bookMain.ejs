@@ -3,6 +3,7 @@
   <head>
     <title>Book Index</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
     <h1>Books Inventory</h1>
@@ -15,12 +16,16 @@
         <div class="book-card">
           <p><small>Title:<br></small> <%= ele.title %></p>
           <p><small>Author:<br></small> <%= ele.author.name %></p>
+          <div class="modify-icons">
+            <div><a href='/books/<%= ele.id %>/edit'><i class="far fa-edit"></i></a></div>
+            <div><a href='/books/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+          </div>
         </div>
       </a>
-      <div class="modify">
+      <!-- <div class="modify">
         <a href='/books/<%= ele.id %>/edit'>Edit</a>
         <a href='/books/<%= ele.id %>/delete'>Delete</a>
-      </div>
+      </div> -->
     </li>
     <% }) %> 
   </body>
