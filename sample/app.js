@@ -8,9 +8,9 @@ const MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 var Blog = require('./models/Blog')
 var Book = require('./models/Book')
+var authController = require('./controllers/authController')
 
-// Blog.find()
-
+// Connecting mongoose to DB
 mongoose.connect('mongodb://localhost/sample',  (err) => {
 	console.log(err) ? console.log('Unable to connect to DB') : console.log('Connected to mongodb')
 })
@@ -37,6 +37,8 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(authController.sessions)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

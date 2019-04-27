@@ -3,14 +3,19 @@
   <head>
     <title>User</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Users Registration</h1>
+    <% include partials/header.ejs %>
+    <h1>User Registration</h1>
     <form class="add-book" action= '/users/register' method='POST'>
 	    <input type="text" name="name" placeholder="name">
 	    <input type="text" name="email" placeholder="email">
 	    <input type="password" name="password" placeholder="password">
-	    <input type="submit" name="Submit">
+      <div class="submit">
+	     <input type="submit" name="Submit">
+      </div>
 	  </form>
+    <% include partials/footer.ejs %>
   </body>
 </html>

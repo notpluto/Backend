@@ -1,78 +1,24 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/User')
-var bcrypt = require('bcrypt');
-var SALT_WORK_FACTOR = 10;
+var userController = require('../controllers/userController')
+var authController = require('../controllers/authController');
+
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-	User.find({}, (err, user) => {
-		if(err) return next(err);
-  	res.render('userMain', {user});
-	})
-});
+router.get('/', authController.isUserLogged, userController.user_list);
 
-router.get('/info', function(req, res, next) {
-  res.render('info');
-});
+router.get('/info', userController.user_info);
 
-router.get('/register', function(req, res, next) {
-	res.render('addUser')
-})
+router.get('/register', userController.user_register_page)
 
-router.get('/login', function(req, res, next) {
-	res.render('loginUser')
-})
+router.get('/login', userController.user_login_page)
 
+router.post('/register', userController.user_new_register)
 
-// Creating Users 
-router.post('/register', (req, res, next) => {
-	var data = req.body;
-	bcrypt.hash(req.body.password, SALT_WORK_FACTOR, function (err, hash) {
-		User.create(data, (err, user) => {
-			console.log(user)
-			if(err) return next(err);
-			res.redirect('/')
-		})
-	})
-})
+router.post('/login', userController.user_login)
 
-// User Login
-router.post('/login', (req,res,next) => {
-	User.findOne({ email: req.body.email }, (err, user) => {
-		if(err) res.status(500).redirect('/users/login')
-		if(!user) res.status(400).send('User not found')
-			else {
-				bcrypt.compare(req.body.password, user.password, function(err, result) {
-					if(result === true) {
-						console.log(result);
-						req.session.userId = user._id;
-						res.redirect('/users')
-					}
-					else {
-						next(err)
-						res.send('incorrect password');
-					}
-				})
-			}
-	})
-})
+router.get('/logout', userController.user_logout)
 
-// Logout Users
-router.get('/logout', (req, res, next) => {
-	req.session.destroy(function(err) {
-		if(err) return next(err);
-		res.redirect('/users/login')
-	})
-})
-
-// Delete Users
-router.get('/:id/delete', (req, res, next) => {
-	User.findByIdAndDelete((req.params.id), (err, data) => {
-		if(err) return console.log(err);
-		res.redirect('/users')
-	})
-})
-
+router.get('/:id/delete', userController.user_remove)
 
 module.exports = router;

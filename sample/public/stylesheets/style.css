@@ -1,10 +1,62 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700|Source+Serif+Pro:400,700');
 
+/* CSS Reset */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 /* Main Section */
 
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: ghostwhite;
 }
 a {
   color: #00B7FF;
@@ -18,7 +70,13 @@ a {
 }
 h1{
 	font-family: 'Inconsolata', monospace;
-	font-size: 2rem;
+	font-size: 3.6rem;
+	margin: 40px;
+	text-decoration: underline;
+}
+h1 ~ p {
+	margin: 40px;
+	font-size: 1rem;
 }
 .book-list{
 	list-style: none;
@@ -28,8 +86,11 @@ h1{
 	width: 280px;
 	padding: 10px;
 	color: #333;
-	border-radius: 10px;
-	/*margin-bottom: 10px;*/
+	border-radius: 6px;
+	margin: 20px 10px 10px 30px;
+}
+.book-card p{
+	margin: 10px 0;
 }
 .book-list li {
 	display: inline-block;
@@ -55,6 +116,8 @@ input{
 	padding: 10px;
 	margin: 10px;
 	display: block;
+	border: 2px solid black;
+	font-size: 1rem;
 }
 textarea{
 	width: 420px;
@@ -66,13 +129,14 @@ textarea{
 	outline: 0;
 }
 .submit input{
-	width: 300px;
+	width: 200px;
 	border: 0;
 	outline: 0;
 	height: 40px;
-	background: gray;
+	background: black;
 	font-size: 1rem;
-	margin-left: 60px;
+	margin-left: 130px;
+	color: #ffe;
 }
 li a {
 	text-decoration: none;
@@ -113,8 +177,15 @@ select {
 	width: 280px;
 	padding: 10px;
 	color: #333;
-	border-radius: 10px;
+	border-radius: 6px;
+	margin: 20px 10px 10px 30px;
 }
+.author-card p{
+	margin: 10px;
+}
+/*.author-card a {
+	margin: 0 10px;
+}*/
 div a {
 	text-decoration: none;
 	color: black;
@@ -132,6 +203,52 @@ a i{
 	width: 280px;
 	padding: 10px;
 	color: #333;
-	border-radius: 10px;
-	margin-bottom: 10px;
+	border-radius: 6px;
+	margin: 20px 10px 10px 30px;
+}
+.user-card p{
+	margin: 10px 0;
+}
+
+/* Header Partial */
+
+.menu a{
+	text-decoration: none;
+	color: #fff;
+	margin: 0 20px;
+	padding: 10px 0;
+	font-size: 1.1rem;
+}
+.menu{
+	display: flex;
+	justify-content: space-between;
+	background: #100c08;
+	color: white;
+	padding: 10px;
+}
+
+/* Footer */
+/*footer a {
+	text-decoration: none;
+	text-align: center;
+
+}*/
+footer{	
+	z-index: 1;
+	/*background: #f;*/
+	width: 100%;
+	position: absolute;
+	display: flex;
+	bottom: 0;
+	font-family: 'Inconsolata', monospace;
+}
+footer div {
+	margin: 0 1rem 1rem 38rem;
+	font-size: 1.2rem;
+}
+.fa-github-alt {
+	font-size: 1.2rem;
+}
+.fa-heart{
+	color: red;
 }
