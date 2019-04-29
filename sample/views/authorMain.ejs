@@ -3,14 +3,16 @@
   <head>
     <title>Authors listed</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> 
   </head>
   <body>
     <% include partials/header.ejs %>
-    <h1>Listed Author's</h1>
-    <h2><%= user.name %></h2>
-    <a href="/author/add">New Author</a>
+    <div class="page-head">
+      <h1>Listed Author's</h1>
+      <a class="back" href="/users/">Back</a>
+    </div>
+    <div class="greet">Hello <%= user.name %>!</div>
+    <a href="/author/add" class="add-author">Add Author</a>
     <ul class="book-list">
     <% author.forEach(ele => {%>
     <li>

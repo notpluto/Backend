@@ -3,7 +3,7 @@ var router = express.Router();
 var bookController = require('../controllers/bookController')
 var authController = require('../controllers/authController');
 
-router.get('/', bookController.book_list)
+router.get('/', authController.isUserLogged, bookController.book_list)
 
 router.get('/new', authController.isUserLogged, bookController.book_add_new_show);
 

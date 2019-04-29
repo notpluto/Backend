@@ -3,13 +3,19 @@
   <head>
     <title>Profile</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
   </head>
   <body>
-    <h1>Users Profile</h1>
-    <p>This can only be accessed by Bookstore users</p>
-    <a href="/users/register">Register</a>
-    <a href="/users/login">Login</a>
-    <a href="/users">List Users</a>
+    <div class="page-head">
+      <h1>Users Profile</h1>
+    </div>
+    <p class="page-head">This can only be accessed by Bookstore users</p>
+  
+      <a href="/users/register">Register</a>
+      <a href="/users/login">Login</a>
+      <a href="/users">List Users</a>
+
     <% include partials/footer.ejs %>
   </body>
 </html>

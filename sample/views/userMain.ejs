@@ -7,12 +7,14 @@
   </head>
   <body>
     <% include partials/header.ejs %>
-    <h1>Member Users</h1>
-    <h3><%= user.name %></h3>
-    <a href="/users/info">Back</a>
-    <!-- <a href="/users/login">Login</a> -->
+    <div class="page-head">
+      <h1>Member Users</h1>
+      <a class="back" href="/users/info">Back</a>
+    </div>
+    <div class="greet">Hello <%= user.name %>!</div>
+    <!-- <a href="/author/add" class="add-author">Add User</a> -->
     <ul class="book-list">
-    <% user.forEach(ele => {%>
+    <% users.forEach(ele => {%>
     <li>
       <div class="user-card"> 
         <p><small>Name:<br></small> <%= ele.name %></p>

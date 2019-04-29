@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 var Blog = require('./models/Blog')
@@ -36,9 +37,11 @@ app.use(session({
   saveUninitialized: true,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
+app.use(flash())
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(authController.sessions)
+app.use(authController.sessions);
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -55,6 +58,8 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  // res.locals.success_messages = req.flash('success_messages');
+  // res.locals.error_messages = req.flash('error_messages');
 
   // render the error page
   res.status(err.status || 500);

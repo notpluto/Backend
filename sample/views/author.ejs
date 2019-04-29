@@ -3,12 +3,16 @@
   <head>
     <title>Profile</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
     <% include partials/header.ejs %>
-  	<a href="/">Back</a>
+   	<div class="page-head">
+      <div></div>
+      <a class="back" href="/users/">Back</a>
+    </div>
 		<div class="wrapper">
-	    <h1>Add new authors</h1>
+	    <h1>Add author</h1>
 	   </div>
 	    <form class="add-book" action= '/author' method='POST'>
 	    	<input type="text" name="name" placeholder="Author Name">

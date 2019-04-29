@@ -3,12 +3,16 @@
   <head>
     <title>Book Details</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
     <% include partials/header.ejs %>
-    <a href="/">Back</a>
+    <div class="page-head">
+      <div></div>
+      <a class="back" href="/users/">Back</a>
+    </div>
     <div class=" wrapper">
-    <h1>Book Details Section</h1>
+    <h1 class="sub-section">Book Details Section</h1>
     <ul class="book-list">
 
     <% book.forEach(ele => {%>
@@ -22,8 +26,8 @@
         <p><small>Tags:</small> <%= ele.tags %></p>
       </div>
       <div class="modify-details">
-        <a href='/books/<%= ele.id %>/edit'>Edit</a>
-        <a href='/books/<%= ele.id %>/delete'>Delete</a>
+        <div><a href='/books/<%= ele.id %>/edit'><i class="far fa-edit"></i></a></div>
+        <div><a href='/books/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
       </div>
     </li>
     <% }) %> 

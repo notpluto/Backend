@@ -7,8 +7,13 @@
   </head>
   <body>
     <% include partials/header.ejs %>
-    <h1>Users Login</h1>
+    <div class="page-head">
+      <h1>User's Login</h1>
+    </div>
     <form class="add-book" action= '/users/login' method='POST'>
+      <% if(message) { %>
+        <p class="error"><%= message %></p>
+      <% } %>
 	    <input type="text" name="email" placeholder="email">
 	    <input type="password" name="password" placeholder="password">
       <div class="submit">
