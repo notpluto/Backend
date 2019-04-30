@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var flash = require('connect-flash');
+var passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 var Blog = require('./models/Blog')
@@ -14,12 +15,15 @@ var authController = require('./controllers/authController')
 // Connecting mongoose to DB
 mongoose.connect('mongodb://localhost/sample',  (err) => {
 	console.log(err) ? console.log('Unable to connect to DB') : console.log('Connected to mongodb')
-})
+});
+
+require('./modules/passport')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var booksRouter = require('./routes/books');
 var authorRouter = require('./routes/author');
+var authRouter = require('./routes/auth');
 
 var app = express();
 
@@ -41,12 +45,15 @@ app.use(flash())
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(authController.sessions);
+app.use(passport.initialize())
+// app.use(passport.session())
 
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
-app.use('/author', authorRouter)
+app.use('/author', authorRouter);
+app.use('/auth', authRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

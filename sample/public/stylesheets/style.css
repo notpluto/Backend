@@ -291,3 +291,14 @@ footer div {
 .fa-heart{
 	color: red;
 }
+
+/* OAuth */
+.google-btn{
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  margin-left: 40px;
+  background: #ff5353;
+}

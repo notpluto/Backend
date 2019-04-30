@@ -4,8 +4,12 @@ var Schema = mongoose.Schema;
 
 var authorSchema = new Schema({
 	name: String,
-	age: Number,
-	email: String,
+	googleId: Number,
+	email: {
+		type: String,
+		unique: true
+	},
+	photo: String,
 	books: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Book'
