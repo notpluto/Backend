@@ -8,18 +8,20 @@
   <body>
     <% include partials/header.ejs %>
     <div class="page-head">
-      <h1>Listed Author's</h1>
+      <h1>Author's dashboard</h1>
       <a class="back" href="/users/">Back</a>
     </div>
-    <div class="greet">Hello <%= user.name %>!</div>
-    <a href="/author/add" class="add-author">Add Author</a>
+    <div class="greet">Hello <%= author.name %>!</div>
+    <!-- <a href="/author/add" class="add-author">Add Author</a> -->
     <ul class="book-list">
     <% author.forEach(ele => {%>
     <li>
       <a href='/author/<%= ele.id %>'>
         <div class="author-card">
           <p><small>Name:<br></small> <%= ele.name %></p>
-          <p><small>Age:<br></small> <%= ele.age %></p>
+          <p><small>Email:<br></small> <%= ele.email %></p>
+          <p><small>GoogleId:<br></small><%= ele.googleId %></p>
+          <p><img src= "<%= ele.photo %>" width="180px" height="180px" >
           <div class="modify-icons">
             <div><a href='/users/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
           </div>

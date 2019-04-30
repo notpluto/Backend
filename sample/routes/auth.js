@@ -25,7 +25,7 @@ router.get('/google', passport.authenticate('google', {
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 	// at this point we have a code from google which we autheticate for user profile
-	res.send('you reached the callback URL')
+	res.redirect('/author')
   // passport.authenticate('google', { failureRedirect: '/login' }),
   // function(req, res) {
   //   res.redirect('/');
