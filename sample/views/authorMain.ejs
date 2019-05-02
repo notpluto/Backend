@@ -6,33 +6,31 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> 
   </head>
   <body>
-    <% include partials/header.ejs %>
+    <% include partials/author-header.ejs %>
     <div class="page-head">
-      <h1>Author's dashboard</h1>
-      <a class="back" href="/users/">Back</a>
+      <h1>Dashboard</h1>
+      <div class="author-info">
+        <div class="auth-name">Hello <%= author.name %>!</div>
+        <p><img src= "<%= author.photo %>" width="30px" height="30px" ></p>
+      </div>
+      <!-- <a class="back" href="/users/">Back</a> -->
     </div>
-    <div class="greet">Hello <%= author.name %>!</div>
-    <!-- <a href="/author/add" class="add-author">Add Author</a> -->
+    <a href="/books/new" class="add-author">Add Books</a>
     <ul class="book-list">
-    <% author.forEach(ele => {%>
-    <li>
-      <a href='/author/<%= ele.id %>'>
-        <div class="author-card">
-          <p><small>Name:<br></small> <%= ele.name %></p>
-          <p><small>Email:<br></small> <%= ele.email %></p>
-          <p><small>GoogleId:<br></small><%= ele.googleId %></p>
-          <p><img src= "<%= ele.photo %>" width="180px" height="180px" >
-          <div class="modify-icons">
-            <div><a href='/users/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+      <% books.forEach(ele => { %>
+      <li>
+        <a href='/books/<%= ele.id %>'>
+          <div class="author-card">
+            <p><small>Books:<br></small> <%= ele.title %></p>
+            <!-- <p><small>Books:<br></small><%= author.books.length %></p> -->
+            <div class="modify-icons">
+              <div><a href='/users/<%= author.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+            </div>
           </div>
-        </div>
-      </a>
-      <!-- <div class="modify">
-        <a href='/author/<%= ele.id %>/edit'>Edit</a>
-        <a href='/author/<%= ele.id %>/delete'>Remove</a>
-      </div> -->
-    </li>
-    <% }) %> 
-    <!-- <% include partials/footer.ejs %> -->
+        </a>
+     </li>
+      <% }) %>
+    </ul> 
+    <% include partials/footer.ejs %>
   </body>
 </html>

@@ -25,10 +25,12 @@
         <p><small>Created:</small> <%= ele.created.toLocaleDateString().split('/').reverse().join('-') %></p>
         <p><small>Tags:</small> <%= ele.tags %></p>
       </div>
+      <% if(author) { %>
       <div class="modify-details">
-        <div><a href='/books/<%= ele.id %>/edit'><i class="far fa-edit"></i></a></div>
+        <div><a href='/books/<%= ele.id %>/edit'><i class="far fa-edit"></i></a></div> 
         <div><a href='/books/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
       </div>
+      <% } %>
     </li>
     <% }) %> 
     </ul>

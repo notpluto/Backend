@@ -1,0 +1,18 @@
+
+<% if(author) { %>
+	<header>
+		<div class="auth-menu">
+			<a href="/author"><i class="fas fa-home"></i>Home</a>
+			<a href="/books"><i class="fas fa-book"></i>Books</a>
+			<a href="/author"><i class="fas fa-feather-alt"></i>Authors</a>
+			<a href="/auth/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+		</div>
+	</header>
+<% } else { %>
+	<header>
+		<div class="auth-menu">
+			<a href="/users/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+			<a href="/books"><i class="fas fa-book"></i>Books</a>
+		</div>
+	</header>
+<% } %>

@@ -9,10 +9,13 @@ module.exports = {
 	},
 
 	// List authors
-	author_list: (req, res, next) => {
-		Author.find({}, (err, author) => {
+	booksbyauthor_list: (req, res, next) => {
+		console.log(req.session);
+		console.log(req.author, "called now")
+		Book.find({author: req.author._id}, (err, books) => {
 			if(err) return next(err);
-			res.render('authorMain', {author})
+			console.log(books);
+			res.render('authorMain', {books})
 		})
 	},
 

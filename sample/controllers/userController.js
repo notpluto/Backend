@@ -6,6 +6,7 @@ module.exports = {
 
 	// Get users
 	user_list: (req, res, next) => {
+		console.log(req.session);
 		User.find({}, (err, users) => {
 			if(err) return next(err);
 			// console.log(req.user.name, 'inside controller')
@@ -19,7 +20,8 @@ module.exports = {
 
 	// Render registration page
 	user_register_page: (req, res, next) => {
-		res.render('signUp')
+		var error = req.flash('error');
+		res.render('signUp', {message: error.length ? error[0]: null})
 	},
 
 	// Render login page
@@ -31,6 +33,14 @@ module.exports = {
 
 	// POST request on register, create new users
 	user_new_register: (req, res, next) => {
+		if(req.body.name.length < 8) {
+			req.flash('error', 'Username must meet the required criteria')
+			res.redirect('/users/register')
+		}
+		if(req.body.password.length < 8) {
+			req.flash('error', 'Password must be atleast of 8 characters')
+			res.redirect('/users/register')
+		}
 		var data = req.body;
 		bcrypt.hash(req.body.password, SALT_WORK_FACTOR, function (err, hash) {
 		User.create(data, (err, user) => {

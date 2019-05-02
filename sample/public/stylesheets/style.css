@@ -113,10 +113,16 @@ form{
 	margin-bottom: 20px;
 }
 .add-book{
-	margin: 2rem auto;
+	/*margin: 2rem auto;*/
 	text-align: center;
 	max-width: 500px;
 	/*min-height: 100%;*/
+}
+.sign-up{
+	margin: 4rem auto;
+	text-align: center;
+	max-width: 500px;
+	min-height: 100%;
 }
 input{
 	width: 420px;
@@ -131,7 +137,7 @@ input{
 }
 textarea{
 	width: 420px;
-	height: 120px;
+	height: 80px;
 	border-radius: 6px;
 	padding: 10px;
 	margin: 10px;
@@ -147,6 +153,18 @@ textarea{
 	font-size: 1rem;
 	margin-left: 130px;
 	color: #ffe;
+}
+.submit button {
+	width: 200px;
+	border: 0;
+	outline: 0;
+	height: 40px;
+	background: black;
+	font-size: 1rem;
+	border-radius: 4px;
+	color: #ffe;
+	letter-spacing: 1px;
+	font-family: 'Inconsolata', monospace;
 }
 li a {
 	text-decoration: none;
@@ -175,6 +193,20 @@ li a {
 .add-author{
 	color: #00B7FF;
 	padding: 0 20px;
+}
+.auth-name{
+	margin-top: 6px;
+	text-transform: capitalize;
+	font-weight: bold;
+	font-size: 1.2rem;
+	font-family: 'Inconsolata', monospace;
+}
+img {
+	border-radius: 50%;
+	margin-left: 10px;
+}
+.author-info{
+	display: flex;
 }
 
 /* Book Details section */
@@ -221,6 +253,8 @@ select {
 }
 .error{
 	color: red;
+}
+.error::first-letter{
 	text-transform: capitalize;
 }
 /*.author-card a {
@@ -252,7 +286,8 @@ a i{
 
 /* Header Partial */
 
-.menu a{
+.menu a, 
+.auth-menu a{
 	text-decoration: none;
 	color: #fff;
 	margin: 0 20px;
@@ -261,8 +296,16 @@ a i{
 }
 .menu{
 	display: flex;
+	font-family: 'Inconsolata', monospace;
 	justify-content: space-between;
 	background: #100c08;
+	color: white;
+	padding: 10px;
+}
+.auth-menu{
+	display: flex;
+	justify-content: space-between;
+	background: darkslategray;
 	color: white;
 	padding: 10px;
 }
@@ -292,13 +335,67 @@ footer div {
 	color: red;
 }
 
-/* OAuth */
-.google-btn{
+/* OAuth button*/
+.google-button {
+	letter-spacing: 1px;
+  height: 50px;
+  border-width: 0;
+  background: black;
   color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 18px;
-  padding: 10px;
-  margin-left: 40px;
-  background: #ff5353;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  
+  &:focus,
+  &:hover {
+    box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+  }
+  &:active {
+    background-color: #e5e5e5;
+    box-shadow: none;
+    transition-duration: 10ms;
+  }
+}
+    
+.google-button__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 8px 0 8px 8px;
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+}
+
+.google-button__icon--plus {
+  width: 26px;
+}
+
+.google-button__text {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 24px;
+  font-size: 20px;
+  font-family: 'Inconsolata', monospace;;
+}
+
+/* Login Type */
+
+.login-type{
+	display: flex;
+	justify-content: space-between;
+}
+.login-type-user{
+	margin: 4rem 6rem;
+	padding: 2rem 6rem;
+	border-right: 2px solid black;
+}
+.login-type-author{
+	margin: 8rem 1rem;
+	padding: 20px;
 }

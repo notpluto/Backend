@@ -3,9 +3,9 @@ var router = express.Router();
 var authorController = require('../controllers/authorController')
 var authController = require('../controllers/authController');
 
-router.get('/add', authController.isUserLogged, authorController.author_create_new_page)
+router.get('/add', authController.isAuthorLogged, authorController.author_create_new_page)
 
-router.get('/', authorController.author_list)
+router.get('/', authController.isAuthorLogged, authorController.booksbyauthor_list)
 
 router.get('/:id', authorController.author_details)
 

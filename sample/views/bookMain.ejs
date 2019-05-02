@@ -11,28 +11,29 @@
       <h1>Books Inventory</h1>
       <a class="back" href="/users/">Back</a>
     </div>
-    <div class="greet">Hello <%= user.name %>!</div>
-    <a href="/books/new" class="add-author">Add Books</a>
+    <div class="greet"><%= user ? 'Hello ' + user.name : null %></div>
+    <!-- <a href="/books/new" class="add-author">Add Books</a> -->
     <ul class="book-list">
 
     <% book.forEach(ele => {%>
-    <li>
-      <a href='/books/<%= ele.id %>'>
-        <div class="book-card">
-          <p><small>Title:<br></small> <%= ele.title %></p>
-          <p><small>Author:<br></small> <%= ele.author.name %></p>
-          <div class="modify-icons">
-            <div><a href='/books/<%= ele.id %>/edit'><i class="far fa-edit"></i></a></div>
-            <div><a href='/books/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+      <li>
+        <a href='/books/<%= ele.id %>'>
+          <div class="book-card">
+            <p><small>Title:<br></small> <%= ele.title %></p>
+            <p><small>Author:<br></small> <%= ele.author.name %></p>
+            <!-- <div class="modify-icons">
+              <div><a href='/books/<%= ele.id %>/edit'><i class="far fa-edit"></i></a></div>
+              <div><a href='/books/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+            </div> -->
           </div>
-        </div>
-      </a>
-      <!-- <div class="modify">
-        <a href='/books/<%= ele.id %>/edit'>Edit</a>
-        <a href='/books/<%= ele.id %>/delete'>Delete</a>
-      </div> -->
-    </li>
-    <% }) %> 
+        </a>
+        <!-- <div class="modify">
+          <a href='/books/<%= ele.id %>/edit'>Edit</a>
+          <a href='/books/<%= ele.id %>/delete'>Delete</a>
+        </div> -->
+      </li>
+      <% }) %> 
+    </ul>
     <% include partials/footer.ejs %>
   </body>
 </html>

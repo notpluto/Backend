@@ -15,17 +15,18 @@
     <!-- <a href="/author/add" class="add-author">Add User</a> -->
     <ul class="book-list">
     <% users.forEach(ele => {%>
-    <li>
-      <div class="user-card"> 
-        <p><small>Name:<br></small> <%= ele.name %></p>
-        <p><small>Email:<br></small> <%= ele.email %></p> 
-        <div class="modify-icons">
-          <div><a href='/users/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+      <li>
+        <div class="user-card"> 
+          <p><small>Name:<br></small> <%= ele.name %></p>
+          <p><small>Email:<br></small> <%= ele.email %></p> 
+          <div class="modify-icons">
+            <div><a href='/users/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+          </div>
         </div>
-      </div>
-      </a>
-    </li>
+        </a>
+      </li>
     <% }) %>
+    </ul>
     <% include partials/footer.ejs %>
   </body>
 </html>

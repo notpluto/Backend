@@ -17,6 +17,8 @@ var bookSchema = new mongoose.Schema({
 	},
 	created: Date,
 	tags: [String],
+	quantity: Number,
+	price: String,
 });
 
 var Book = mongoose.model('Book', bookSchema);

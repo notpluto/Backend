@@ -6,14 +6,10 @@ module.exports = {
 	// Show books
 	book_list: (req, res, next) => {
 		// if(req.session && req.session.userId) {
-			Book.find({}).populate('author').exec((err, book) => {
-				if(err) return next(err);
-				res.render('bookMain', {book});
-			})	
-		// }
-		// else {
-		// res.redirect('/users/login')
-		// }
+		Book.find({}).sort({created: -1}).populate('author').exec((err, book) => {
+			if(err) return next(err);
+			res.render('bookMain', {book});
+		})	
 	},
 
 	// Render new books page
@@ -42,7 +38,7 @@ module.exports = {
 			Author.findByIdAndUpdate(book.author, {$push: {books: book._id}}, 
 			{new: true}, (err, author) => {
 				if(err) return console.log(err)
-					res.redirect('/books')
+					res.redirect('/author')
 				})
 		})
 	},
@@ -64,7 +60,9 @@ module.exports = {
 		var id = req.params.id;
 		Book.findByIdAndUpdate(id, data, {upsert: true, new: true}, (err, data) => {
 			if(err) return console.log(err);
-			res.redirect('/books')
+			var update = req.flash('update')
+			// req.flash('update', 'Book details successfully updated.')
+			res.redirect('/author')
 		})
 	},
 
@@ -72,7 +70,7 @@ module.exports = {
 	book_remove: (req, res, next) => {
 		Book.findByIdAndDelete((req.params.id), (err, data) => {
 			if(err) return console.log(err);
-			res.redirect('/books')
+			res.redirect('/author')
 		})
 	}, 
 }

@@ -14,7 +14,7 @@ passport.use(
 	//check for existing author from profile into local database
 	Author.findOne({email: profile.emails.map(ele => ele.value).join('')}, (err, currentAuthor) => {
 		if(currentAuthor) {
-			console.log('this author already exist' + currentAuthor)
+			// console.log('this author already exist' + currentAuthor)
 			console.log(currentAuthor._id)
 			done(null, currentAuthor)
 		}
@@ -24,7 +24,7 @@ passport.use(
 				googleId: profile.id,
 				email: profile.emails.map(ele => ele.value).join(''),
 				photo: profile.photos.map(ele => ele.value).join(' ')
-			}).save().then((newUser) => {
+			}).save().then((newAuthor) => {
 				console.log('new Author created:' + newAuthor)
 				done(null, newAuthor)
 			})
@@ -42,7 +42,7 @@ passport.serializeUser((author, done) => {
 
 //passport.deserializeUser 
 passport.deserializeUser((id, done) => {
-	Author.findById((id), (err, author) => {
+	Author.findById(id, (err, author) => {
 		done(null, author)
 	})
 });
