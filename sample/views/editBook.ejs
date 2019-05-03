@@ -3,16 +3,18 @@
   <head>
     <title>Edit Books</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
+    <% include partials/author-header.ejs %>
     <div class="page-head">
       <div></div>
-      <a class="back" href="/users/">Back</a>
+      <!-- <a class="back" href="/users/">Back</a> -->
     </div>
     <div class="wrapper">
       <h1>Edit Book</h1>
      </div>
-      <form class="add-book" action="/books/<%=book.id %>/update" method="POST">
+      <form class="sign-up" action="/books/<%=book.id %>/update" method="POST">
         <input type="text" name="title" placeholder="Book Title" value= "<%= book.title%>" >
         <select name="author">
           <% authors.forEach(author => { %>
@@ -27,5 +29,6 @@
         </div>
       </form>
     </div>
+  <% include partials/footer.ejs %>
   </body>
 </html>

@@ -6,10 +6,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
-    <% include partials/header.ejs %>
+    <% if(user) { %>
+      <% include partials/header.ejs %>
+    <% } else if(author) {%>
+      <% include partials/author-header.ejs %>
+    <% } else { %>
+      <% include partials/header.ejs %>
+    <% } %>
     <div class="page-head">
       <div></div>
-      <a class="back" href="/users/">Back</a>
+      <a class="back" href="/author/">Back</a>
     </div>
     <div class=" wrapper">
     <h1 class="sub-section">Book Details Section</h1>
@@ -25,7 +31,7 @@
         <p><small>Created:</small> <%= ele.created.toLocaleDateString().split('/').reverse().join('-') %></p>
         <p><small>Tags:</small> <%= ele.tags %></p>
       </div>
-      <% if(author) { %>
+      <% if(author && !user) { %>
       <div class="modify-details">
         <div><a href='/books/<%= ele.id %>/edit'><i class="far fa-edit"></i></a></div> 
         <div><a href='/books/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>

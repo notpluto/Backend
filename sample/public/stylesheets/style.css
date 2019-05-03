@@ -66,8 +66,18 @@ a {
   margin: 10px;
   display: inline-block;
 }
+.main-store{
+	display: flex;
+	justify-content: space-between;
+	margin: 4rem;
+	/*background: #F1F1F1;*/
+}
+.main-store img{
+	margin: 2rem 10rem;
+}
 .main-head{
 	margin: 40px;
+	letter-spacing: 2px;
 }
 .sub-section{
 	margin: 10px 0;
@@ -91,12 +101,25 @@ h1 ~ p {
 	list-style: none;
 }
 .book-card{
-	background: #997a8d;
-	width: 280px;
-	padding: 10px;
+	background: thistle;
+	width: 300px;
+	height: 120px;
+	padding: 20px;
 	color: #333;
-	border-radius: 6px;
+	border-radius: 4px;
 	margin: 20px 10px 10px 30px;
+}
+.buy-book{
+	width: 60px;
+	border: 0;
+	outline: 0;
+	height: 40px;
+	background: black;
+	font-size: 0.8rem;
+	border-radius: 4px;
+	color: #ffe;
+	letter-spacing: 1px;
+	font-family: 'Inconsolata', monospace;
 }
 .book-card p{
 	margin: 10px 0;
@@ -107,6 +130,7 @@ h1 ~ p {
 }
 p small {
 	font-weight: bold;
+	padding-right: 10px;
 	font-size: 0.9rem;
 }
 form{
@@ -119,7 +143,7 @@ form{
 	/*min-height: 100%;*/
 }
 .sign-up{
-	margin: 4rem auto;
+	margin: 3rem auto;
 	text-align: center;
 	max-width: 500px;
 	min-height: 100%;
@@ -201,7 +225,7 @@ li a {
 	font-size: 1.2rem;
 	font-family: 'Inconsolata', monospace;
 }
-img {
+.user-img {
 	border-radius: 50%;
 	margin-left: 10px;
 }
@@ -289,6 +313,7 @@ a i{
 .menu a, 
 .auth-menu a{
 	text-decoration: none;
+	font-family: 'Inconsolata', monospace;
 	color: #fff;
 	margin: 0 20px;
 	padding: 10px 0;
@@ -301,6 +326,12 @@ a i{
 	background: #100c08;
 	color: white;
 	padding: 10px;
+}
+.menu a:hover{
+	color: green;
+}
+.auth-menu a:hover{
+	color: tomato;
 }
 .auth-menu{
 	display: flex;

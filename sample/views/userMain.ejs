@@ -8,12 +8,13 @@
   <body>
     <% include partials/header.ejs %>
     <div class="page-head">
-      <h1>Member Users</h1>
+      <h1>User Dashboard</h1>
       <a class="back" href="/users/info">Back</a>
     </div>
     <div class="greet">Hello <%= user.name %>!</div>
+    <div>You have no purchased book yet.</div>
     <!-- <a href="/author/add" class="add-author">Add User</a> -->
-    <ul class="book-list">
+    <!-- <ul class="book-list">
     <% users.forEach(ele => {%>
       <li>
         <div class="user-card"> 
@@ -26,7 +27,7 @@
         </a>
       </li>
     <% }) %>
-    </ul>
+    </ul> -->
     <% include partials/footer.ejs %>
   </body>
 </html>

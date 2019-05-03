@@ -18,7 +18,7 @@ module.exports = {
 	},
 
 	isAuthorLogged: (req, res, next) => {
-		if(req.session && req.session.passport.user) {
+		if(req.session.passport && req.session.passport.user) {
 			Author.findById(req.session.passport.user, (err, author) => {
 				if(err) console.log(err)
 				req.author = author;

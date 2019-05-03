@@ -6,7 +6,9 @@ module.exports = {
 	// Show books
 	book_list: (req, res, next) => {
 		// if(req.session && req.session.userId) {
+		console.log(req.session)
 		Book.find({}).sort({created: -1}).populate('author').exec((err, book) => {
+			console.log(book)
 			if(err) return next(err);
 			res.render('bookMain', {book});
 		})	
@@ -36,7 +38,7 @@ module.exports = {
 		Book.create(data, (err, book) => {
 			if(err) return next(err);
 			Author.findByIdAndUpdate(book.author, {$push: {books: book._id}}, 
-			{new: true}, (err, author) => {
+			{new: true}).populate('author', 'name').exec((err, author) => {
 				if(err) return console.log(err)
 					res.redirect('/author')
 				})
@@ -45,12 +47,18 @@ module.exports = {
 
 	// Render edit page for books
 	book_details_edit: (req, res, next) => {
-		var id = req.params.id
+		var id = req.params.id;
 		Book.findById(req.params.id, (err, book) => {
 			if(err) return next(err);
-			Author.find({}, "name", (err, authors) => {
-			res.render('editBook', {book, authors})
-			})
+				if(req.author._id.equals(book.author)) {
+					console.log('Id match found')
+					Author.find({}, "name", (err, authors) => {
+					res.render('editBook', {book, authors})
+				})	
+			}
+			else{
+				res.status(401).redirect('/books')
+			}
 		})
 	},
 
@@ -68,9 +76,18 @@ module.exports = {
 
 	// Remove books
 	book_remove: (req, res, next) => {
-		Book.findByIdAndDelete((req.params.id), (err, data) => {
-			if(err) return console.log(err);
-			res.redirect('/author')
-		})
-	}, 
+		var id = req.params.id
+		Book.findOne({_id: req.params.id}), (err, book) => {
+			if(err) return next(err)
+				if(req.author_id.equals(book.author)) {
+					Book.findByIdAndDelete((req.params.id), (err, data) => {
+						if(err) return console.log(err);
+						res.redirect('/author')		
+					})
+				}
+				else{
+					res.status(401).redirect('/books')
+				}
+			}
+		}, 
 }

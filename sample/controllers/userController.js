@@ -63,7 +63,7 @@ module.exports = {
 				if(result) {
 					console.log(result);
 					req.session.userId = user._id;
-					res.redirect('/users')
+					res.redirect('/books')
 				}
 				else {
 					// next(err)
@@ -77,10 +77,8 @@ module.exports = {
 	},
 
 	user_logout: (req, res, next) => {
-		req.session.destroy(function(err) {
-			if(err) return next(err);
-			res.redirect('/users/login')
-		})
+		req.session.destroy();
+		res.redirect('/users/login');
 	},
 
 	user_remove: (req, res, next) => {
