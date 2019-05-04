@@ -1,4 +1,5 @@
 var User = require('../models/User')
+var Cart = require('../models/Cart')
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 
@@ -6,7 +7,7 @@ module.exports = {
 
 	// Get users
 	user_list: (req, res, next) => {
-		console.log(req.session);
+		// console.log(req.session);
 		User.find({}, (err, users) => {
 			if(err) return next(err);
 			// console.log(req.user.name, 'inside controller')
@@ -44,10 +45,15 @@ module.exports = {
 		var data = req.body;
 		bcrypt.hash(req.body.password, SALT_WORK_FACTOR, function (err, hash) {
 		User.create(data, (err, user) => {
-			console.log(user)
+			// console.log(user, err, 'c1')
 			if(err) return next(err);
-			res.redirect('/')
+			Cart.create({userId: user._id}, (err, cart) => {
+				if(err) return next(err);
+				// User.findOneAndUpdate({_id: id}, { $push: { carts: cart._id})
+				// console.log(cart)
+			})
 		})
+			res.redirect('/login')
 	})
 	},
 
@@ -61,7 +67,7 @@ module.exports = {
 		else {
 			bcrypt.compare(req.body.password, user.password, function(err, result) {
 				if(result) {
-					console.log(result);
+					// console.log(result);
 					req.session.userId = user._id;
 					res.redirect('/books')
 				}

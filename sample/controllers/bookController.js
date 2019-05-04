@@ -5,10 +5,10 @@ module.exports = {
 
 	// Show books
 	book_list: (req, res, next) => {
-		// if(req.session && req.session.userId) {
-		console.log(req.session)
+		// console.log(req.session,)
+		// console.log(req.author)
 		Book.find({}).sort({created: -1}).populate('author').exec((err, book) => {
-			console.log(book)
+			// console.log(book)
 			if(err) return next(err);
 			res.render('bookMain', {book});
 		})	
@@ -51,7 +51,7 @@ module.exports = {
 		Book.findById(req.params.id, (err, book) => {
 			if(err) return next(err);
 				if(req.author._id.equals(book.author)) {
-					console.log('Id match found')
+					// console.log('Id match found')
 					Author.find({}, "name", (err, authors) => {
 					res.render('editBook', {book, authors})
 				})	

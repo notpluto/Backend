@@ -10,11 +10,11 @@ module.exports = {
 
 	// List author's book
 	booksbyauthor_list: (req, res, next) => {
-		console.log(req.session);
-		console.log(req.author, "called now")
+		// console.log(req.session);
+		// console.log(req.author, "called now")
 		Book.find({author: req.author._id}, (err, books) => {
 			if(err) return next(err);
-			console.log(books);
+			// console.log(books);
 			res.render('authorMain', {books})
 		})
 	},

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> 
+</head>
+<body>
+	<% if(user) { %>
+    <% include partials/header.ejs %>
+  <% } %>
+  <div class="wrapper">
+    <div class="page-head">
+      <h1>Add to Cart</h1>
+    </div>
+    <form class="sign-up" action= '/cart/<%book._id%>/additem' method='POST'>
+    	<input type="text" name="title" placeholder="Book Title" value= "<%= book.title%>" readonly>
+    	<textarea type="text" placeholder="Description" name="description" readonly><%=book.description%></textarea>
+    	<input type="number" name="pages" placeholder="Pages" value= "<%= book.pages%>" readonly>
+    	<input type="text" name="price" placeholder="INR" value= "<%=book.price%>" readonly>
+    	<input type="number" name="quantity" placeholder="Quantity" value= "<%=book.quantity%>">
+    	<div class="submit">
+      <form class="" action= '/cart/<%book._id%>/additem' method='POST'>
+    		<input type="submit" value="Submit">
+      </form>
+			</div>
+    </form>
+  </div>
+    <% include partials/footer.ejs %>
+</body>
+</html>
