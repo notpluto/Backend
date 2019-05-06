@@ -6,12 +6,35 @@ var SALT_WORK_FACTOR = 10;
 module.exports = {
 
 	// Get users
-	user_list: (req, res, next) => {
-		// console.log(req.session);
-		User.find({}, (err, users) => {
-			if(err) return next(err);
-			// console.log(req.user.name, 'inside controller')
-  		res.render('userMain', {users});
+	// user_list: (req, res, next) => {
+	// 	// console.log(req.session);
+	// 	Cart.find({}, (err, users) => {
+	// 		if(err) return next(err);
+	// 		// console.log(req.user.name, 'inside controller')
+ //  		res.render('userMain', {users});
+	// 	})
+	// },
+
+	show_user_cart: (req, res, next) => {
+		Cart.findOne({})
+		.populate({
+			path:'products', 
+			populate:
+			[{
+				path: 'bookId',
+				populate:
+				{
+					path: 'author',
+					model: 'Author'
+				}
+			}]
+		})
+		.exec((err, cart) => {
+			if(err) console.log(err)
+				console.log(cart);
+				// res.send(cart)
+				res.render('userMain', {cart})
+				// res.json(cart)
 		})
 	},
 
@@ -49,16 +72,26 @@ module.exports = {
 			if(err) return next(err);
 			Cart.create({userId: user._id}, (err, cart) => {
 				if(err) return next(err);
-				// User.findOneAndUpdate({_id: id}, { $push: { carts: cart._id})
-				// console.log(cart)
+				var objectToSave = {
+					cartId: cart._id,
+				}
+				User.findByIdAndUpdate({_id: user._id}, objectToSave, {new: true}, (err, user)=> {
+					console.log(cart, 'cart')
+					console.log(user, 'user')
+					console.log(req.session, 'session')
+					req.session.userId =user._id
+					res.redirect('/users/login')
+
+				})
 			})
 		})
-			res.redirect('/login')
+			// res.redirect('/users/login')
 	})
 	},
 
 	user_login: (req, res, next) => {
 		User.findOne({ email: req.body.email }, (err, user) => {
+			console.log(req.session)
 		if(err) res.status(500).redirect('/users/login')
 		if(!user) {
 			req.flash('error', 'Invalid Email')

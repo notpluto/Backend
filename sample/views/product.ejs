@@ -13,14 +13,16 @@
     <div class="page-head">
       <h1>Add to Cart</h1>
     </div>
-    <form class="sign-up" action= '/cart/<%book._id%>/additem' method='POST'>
+    <form class="sign-up" action= '/cart/<%= book._id%>/additem' method='POST'>
     	<input type="text" name="title" placeholder="Book Title" value= "<%= book.title%>" readonly>
     	<textarea type="text" placeholder="Description" name="description" readonly><%=book.description%></textarea>
+      <input type="hidden" name="bookId"  value= "<%= book.id%>" readonly>
+
     	<input type="number" name="pages" placeholder="Pages" value= "<%= book.pages%>" readonly>
     	<input type="text" name="price" placeholder="INR" value= "<%=book.price%>" readonly>
     	<input type="number" name="quantity" placeholder="Quantity" value= "<%=book.quantity%>">
     	<div class="submit">
-      <form class="" action= '/cart/<%book._id%>/additem' method='POST'>
+      <form class="" action= '/cart/<%=book._id%>/additem' method='POST'>
     		<input type="submit" value="Submit">
       </form>
 			</div>

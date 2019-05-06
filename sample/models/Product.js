@@ -8,9 +8,10 @@ var productSchema = new Schema({
 		required: true,
 		ref: 'Book'
 	},
-	qunatity: {
+	quantity: {
 		type: Number,
 		default: 1
+	}
 })
 
 var Product = mongoose.model('Product', productSchema);

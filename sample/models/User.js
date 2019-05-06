@@ -21,6 +21,10 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		minlength: 8,
+	},
+	cartId: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Cart'
 	}
 });
 

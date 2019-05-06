@@ -61,4 +61,18 @@ module.exports = {
 		}
 	},
 
+	cartSession: (req, res, next) => {
+		if(req.session.cart) {
+			Cart.findById(req.session.cart, (err, cart) => {
+				req.cart = cart;
+				res.locals.cart = cart;
+				next()
+			});
+		}
+		else {
+			req.cart = null;
+			res.locals.cart = null;
+		}
+	}
+
 }

@@ -12,22 +12,31 @@
       <a class="back" href="/users/info">Back</a>
     </div>
     <div class="greet">Hello <%= user.name %>!</div>
-    <div>You have no purchased book yet.</div>
+    <!-- <div>You have no purchased book yet.</div> -->
     <!-- <a href="/author/add" class="add-author">Add User</a> -->
-    <!-- <ul class="book-list">
-    <% users.forEach(ele => {%>
-      <li>
-        <div class="user-card"> 
-          <p><small>Name:<br></small> <%= ele.name %></p>
-          <p><small>Email:<br></small> <%= ele.email %></p> 
-          <div class="modify-icons">
-            <div><a href='/users/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+    <% if(cart.products) { %>
+    <div style= "margin-left: 30px"> You have following books in your cart:</div>
+      <ul class="book-list">
+      <% cart.products.forEach(ele => {%>
+        <li>
+          <div class="user-card"> 
+            <p><small>Book:<br></small> <%= ele.bookId.title %></p> 
+            <p><small>Author:<br></small> <%= ele.bookId.author.name %></p>
+            <p><small>Quantity:<br></small> <%= ele.quantity %></p>
+            <p><small>Price:<br></small> <%= ele.bookId.price %></p>
+            <!-- <p><small>Quantity:<br></small> <%= ele.quantity %></p> -->
+
+            <div class="modify-icons">
+              <div><a href='/users/<%= ele.id %>/delete'><i class="fas fa-trash-alt"></i></a></div>
+            </div>
           </div>
-        </div>
-        </a>
-      </li>
-    <% }) %>
-    </ul> -->
+          </a>
+        </li>
+      <% }) %>
+      </ul>
+    <% } else { %> 
+      <div>You have no purchased book yet.</div>
+    <% }%>
     <% include partials/footer.ejs %>
   </body>
 </html>

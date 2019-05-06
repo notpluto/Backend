@@ -5,7 +5,7 @@ module.exports = {
 
 	// Show books
 	book_list: (req, res, next) => {
-		// console.log(req.session,)
+		console.log(req.session)
 		// console.log(req.author)
 		Book.find({}).sort({created: -1}).populate('author').exec((err, book) => {
 			// console.log(book)

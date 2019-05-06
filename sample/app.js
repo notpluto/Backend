@@ -25,6 +25,7 @@ var booksRouter = require('./routes/books');
 var authorRouter = require('./routes/author');
 var authRouter = require('./routes/auth');
 var cartRouter = require('./routes/cart');
+var apiRouter = require('./routes/api')
 
 
 var app = express();
@@ -51,6 +52,7 @@ app.use(passport.session())
 
 app.use(authController.sessions);
 app.use(authController.authorSession);
+// app.use(authController.cartSession);
 
 
 app.use('/', indexRouter);
@@ -59,6 +61,7 @@ app.use('/books', booksRouter);
 app.use('/author', authorRouter);
 app.use('/auth', authRouter)
 app.use('/cart', cartRouter)
+app.use('/api/v1', apiRouter)
 
 
 // catch 404 and forward to error handler

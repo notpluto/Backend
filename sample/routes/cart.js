@@ -9,9 +9,9 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id/additem', authController.isUserLogged, cartController.show_cart)
 
-router.post('/:id/additem', authController.isUserLogged, cartController.show_cart)
+router.post('/:id/additem', authController.isUserLogged, cartController.add_to_cart)
 
-
+router.get('/users/cart', cartController.show_user_cart)
 
 
 module.exports = router;
