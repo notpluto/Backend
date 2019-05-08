@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	</head>
+	<body>
+  	<% include partials/header.ejs %>
+		<div class="register">
+	    <div class="page-head">
+	      <h1>User Registration</h1>
+	    </div>
+	    <form class="sign-up" action= '/users/register' enctype="multipart/form-data" method='POST'>
+	      <p class="error"><%= error[0]%></p>
+		    <input type="text" name="name" placeholder="name">
+		    <input type="text" name="email" placeholder="email">
+		    <input type="password" name="password" placeholder="password">
+   			<input type="file" name="photo">
+	      <div class="submit">
+		     <button type="submit" name="Submit">Sign Up as User</button>
+	      </div>
+		  </form>
+		</div>
+	</body>
+</html>

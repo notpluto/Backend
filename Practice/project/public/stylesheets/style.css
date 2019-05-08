@@ -1,0 +1,154 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* index */
+
+.main{
+	display: flex;
+	justify-content: space-around;
+	background: darkslateblue;
+}
+.sign-up{
+	margin: 3rem auto;
+	text-align: center;
+	max-width: 500px;
+	min-height: 100%;
+}
+input{
+	width: 420px;
+	height: 30px;
+	outline: 0;
+	border-radius: 6px;
+	padding: 10px;
+	margin: 10px;
+	display: block;
+	border: 2px solid green;
+	font-size: 1rem;
+}
+textarea{
+	width: 420px;
+	height: 80px;
+	border-radius: 6px;
+	padding: 10px;
+	margin: 10px;
+	display: block;
+	outline: 0;
+}
+.submit input{
+	width: 200px;
+	border: 0;
+	outline: 0;
+	height: 40px;
+	background: black;
+	font-size: 1rem;
+	margin-left: 130px;
+	color: #ffe;
+}
+.submit button {
+	width: 200px;
+	border: 0;
+	outline: 0;
+	height: 40px;
+	background: violet;
+	font-size: 1rem;
+	border-radius: 4px;
+	color: #ffe;
+	letter-spacing: 1px;
+	font-family: 'Inconsolata', monospace;
+}
+
+/* OAuth button*/
+.google-button {
+	letter-spacing: 1px;
+  height: 50px;
+  border-width: 0;
+  background: silver;
+  color: black;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  
+  &:focus,
+  &:hover {
+    box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+  }
+  &:active {
+    background-color: #e5e5e5;
+    box-shadow: none;
+    transition-duration: 10ms;
+  }
+}
+    
+.google-button__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 8px 0 8px 8px;
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+}
+
+.google-button__icon--plus {
+  width: 26px;
+}
+
+.google-button__text {
+  display: inline-block;
+  /*vertical-align: middle;*/
+  padding: 0 24px;
+  font-size: 20px;
+  font-family: 'Inconsolata', monospace;;
+}
+.fa-github{
+	font-size: 20px;
+	margin-left: 1rem; 
+}
+.error{
+	color: red;
+}
+
+/*Header*/
+
+.menu a{
+	text-decoration: none;
+	font-family: 'Inconsolata', monospace;
+	color: #fff;
+	margin: 0 20px;
+	padding: 10px 0;
+	font-size: 1.1rem;
+}
+.menu{
+	display: flex;
+	font-family: 'Inconsolata', monospace;
+	justify-content: space-between;
+	background: #100c08;
+	color: white;
+	padding: 10px;
+}
+
+/* Login Type */
+
+.login-type{
+	display: flex;
+	/*justify-content: space-between;*/
+}
+.login-type-user{
+	padding: 1rem;
+	border-right: 2px solid black;
+}
+.login-type-oauth{
+	margin: 4rem 1rem;
+	/*padding: 20px;*/
+}
