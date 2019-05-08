@@ -1,5 +1,8 @@
 node_modules/
 node_modules:
+Practice/project/public/uploads
+Practice/project/modules/keys.js
+public/uploads
 .DS_Store/
 
 

@@ -4,7 +4,6 @@ var User = require('../models/User')
 const bcrypt = require('bcrypt')
 var SALT_WORK_FACTOR = 10;
 var multer  = require('multer')
-var path = require('path')
 
 // Set storage
 var storage = multer.diskStorage({
