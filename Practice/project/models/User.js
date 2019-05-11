@@ -26,7 +26,7 @@ var userSchema = new mongoose.Schema({
 		name: String,
 		photo: String
 	},
-	google:{
+	twitter:{
 		name: String,
 		photo: String 
 	}

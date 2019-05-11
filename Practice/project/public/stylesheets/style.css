@@ -108,12 +108,16 @@ textarea{
   display: inline-block;
   /*vertical-align: middle;*/
   padding: 0 24px;
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Inconsolata', monospace;;
 }
 .fa-github{
 	font-size: 20px;
 	margin-left: 1rem; 
+}
+.fa-twitter{
+	font-size: 20px;
+	color: #3391DB;
 }
 .error{
 	color: red;

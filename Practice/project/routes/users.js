@@ -58,6 +58,15 @@ router.post('/register', upload.single('photo'), (req, res, next) => {
 	}
 	}),
 
+// Logged In via twitter
+router.get('/twitter', (req, res, next) => {
+	res.send('You are logged in via Twitter')
+})
+
+// Logged In via Github
+router.get('/github', (req, res, next) => {
+	res.send('You are logged in via Github')
+})
 
 
 
