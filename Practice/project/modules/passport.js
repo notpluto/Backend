@@ -43,6 +43,9 @@ passport.use(new GitHubStrategy({
 	console.log(profile)
 	User.findOne({email: profile.emails[0].value}, (err, currentUser) => {
 		if(currentUser) {
+			if(currentUser.strategies.includes(profile.provider)) {
+				return (null, currentUser, cb)
+			}
 			// console.log('this author already exist' + currentUser)
 			console.log(currentUser._id)
 			done(null, currentUser)
