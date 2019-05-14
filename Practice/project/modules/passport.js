@@ -122,8 +122,6 @@ passport.use(new TwitterStrategy({
 	)
 )
 
-
-
 passport.serializeUser((user, done) => {
   	done(null, user.id);
 	});

@@ -9,6 +9,7 @@ var passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose'); 
 var modules = require('./modules/database')
+const nodemailer = require('nodemailer')
 
 
 // Connecting mongoose to DB
